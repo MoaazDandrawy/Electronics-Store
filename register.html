@@ -1,0 +1,108 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style3.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <form action="" onsubmit="">
+            <h1>Registation</h1>
+            <div class="inputbox">
+                <div class="inputfield">
+                    <input pattern="[A-Za-z ]+" type="text" placeholder="Fullname" required>
+                    <img src="user.png" margin-top="10px">
+
+                </div>
+            </div>
+            <div class="inputbox">
+                <div class="inputfield">
+                    <input pattern="[a-zA-Z0-9_]{3,20}" type="text" placeholder="username" required id="username">
+                    <img src="user.png" margin-top="10px">
+                    <span id="usernameError" style="color: red;"></span>
+                </div>
+            </div>
+            <div class="inputbox">
+                <div class="inputfield">
+                    <input type="email" placeholder="Email" required>
+                    <img src="email.png">
+
+                </div>
+            </div>
+            <div class="inputbox">
+                <div class="inputfield">
+                    <input pattern="[0-9]{10,15}" type="text" placeholder="phonenumber" required>
+                    <img src="phone.png">
+                </div>
+
+            </div>
+            <div class="inputbox">
+                <div class="inputfield">
+                    <input type="password" placeholder="password" required id="pass1">
+                    <img src="lock.png" margin-top="10px">
+
+                </div>
+            </div>
+            <div class="inputbox">
+                <div class="inputfield">
+                    <input type="password" placeholder="confirm your password" id="pass2" required>
+                    <img src="lock.png" margin-top="10px">
+                    <span id="span"></span>
+                </div>
+            </div>
+            <label><input type="checkbox" required>I admit that all the data is correct</label>
+            <button type="submit" id="button">submit</button>
+            <a href="./log.html" style="padding: 15px; width: 100%; text-align: center; background-color: #fff; display: inline-block; margin-top: 10px; text-decoration: none; color: #000;">  Login </a>
+    </div>
+
+    </form>
+
+    </div>
+    <script>
+
+
+        var password = document.getElementById("pass1")
+        var password2 = document.getElementById("pass2")
+        var username = document.getElementById("username")
+        var button = document.getElementById("button")
+        var span = document.getElementById("span")
+        var usernameError = document.getElementById("usernameError");
+        /*
+        if(x.value!=y.value)
+         alert("fdsfn;dsn")
+     
+
+     */
+        document.querySelector("form").addEventListener("submit", function (e) {
+            if (username.value.length < 5) {
+                e.preventDefault();
+                usernameError.innerHTML = "Username must be at least 5 characters long.";
+                return
+            } else {
+
+                usernameError.innerHTML = "";
+            }
+            if (password.value != password2.value) {
+                e.preventDefault();
+                span.innerHTML = "password must match"
+                span.style.color = "red";
+
+            }
+            else {
+                window.localStorage.setItem("userdata", username.value)
+                window.localStorage.setItem("passdata", password.value)
+
+                window.open("log.html");
+            }
+        })
+
+
+
+    </script>
+
+</body>
+
+</html>
